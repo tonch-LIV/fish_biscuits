@@ -6,3 +6,5 @@ fish flavored biscuits business site
 
 - added two html docs (index & sales) and one js file
 - added .eslintor file
+- added structure for index and sales pages
+- added style.css for styling and reset.css for fault tolerence
