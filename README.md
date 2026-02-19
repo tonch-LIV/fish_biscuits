@@ -8,3 +8,5 @@ fish flavored biscuits business site
 - added .eslintor file
 - added structure for index and sales pages
 - added style.css for styling and reset.css for fault tolerence
+- linked css sheets and added placeholder for font
+- added object literals containg data for different cities
