@@ -14,3 +14,9 @@ fish flavored biscuits business site
   - finished building seattle js code for sales calculation, tested if populated in browser successfully, no console errors, amd pushed to main
   - applied same code structure to tokyo before adding to rest of the cities, not forgetting to add function calls at the bottom of doc, worked; repeat, (!!! note for future on avoiding repetitions/ something, something about constructor functions, shared prototype method, storing locations in one array, looping through that array to render)
   - pushed to main, moving on for now to other styling and editing
+  - started applying styling
+    - added black and orange banner (fix left and right margins(fixed through use of reset css... .__.))
+      - centered text
+      - !!! need to align nav items s-x-s !!!
+      - added grey-ish footer banner
+      - refactored code to use element selectors, rather than classes for the main shared design elements across both pages
