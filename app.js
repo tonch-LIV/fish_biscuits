@@ -35,7 +35,7 @@ let seattle = {
         this.estimates.push(total);  // | #4 | Store the results in array…  as a property of the object 
     },
 
-    render: function() { // | #5 | Display the values of each array as unordered lists in the browser.
+    render: function() { // | #5 & 6 | Display the values of each array as unordered lists in the browser.
         let container = document.getElementById("salesData");
 
         let section = document.createElement("section");
@@ -60,7 +60,9 @@ let seattle = {
     },
 
     // do it like we did with Geno's age ...
-    // estimate: this.estimates = generateEstimate( this.minCustomers, this.maxCustomers, this.avgSale )
+    // !!! a little different than how it was done with geno; built the element first in memory then appended near end, for, and i quote, "It scales better.
+    // It matches professional practice.
+    // It keeps DOM operations predictable"
 }
 
 let tokyo = {
@@ -75,8 +77,50 @@ let tokyo = {
         return Math.floor(Math.random() * (this.maxCustomers - this.minCustomers + 1)) + this.minCustomers;
 },
 
+    // | #3 | Calculate & store simulated amounts of cookies purchased each hour, using average cookies purchased and random number of customers generated
+    calcSales: function() {
+        this.estimates = [];
+        let total = 0;
+
+        for (let i = 0; i < hours.length; i++) {
+            let customers = this.randomCustomers();
+            let cookies = Math.floor(customers * this.avgSale);
+            this.estimates.push(cookies);
+            total += cookies;
+        }
+
+        this.estimates.push(total);  // | #4 | Store the results in array…  as a property of the object 
+    },
+
+    render: function() { // | #5 & 6 | Display the values of each array as unordered lists in the browser.
+        let container = document.getElementById("salesData");
+
+        let section = document.createElement("section");
+        let h2 = document.createElement("h2");
+        h2.textContent = this.name;
+        section.appendChild(h2);
+
+        let ul = document.createElement("ul");
+
+        for (let i = 0; i < hours.length; i++) {
+            let li = document.createElement("li");
+            li.textContent = `${hours[i]}: ${this.estimates[i]} cookies`;
+            ul.appendChild(li);
+        }
+
+        let totalLi = document.createElement("li");
+        totalLi.textContent = `Total: ${this.estimates[this.estimates.length - 1]} cookies`;
+        ul.appendChild(totalLi);
+
+        section.appendChild(ul);
+        container.appendChild(section);
+    },
+
     // do it like we did with Geno's age ...
-    // estimate: this.estimates = generateEstimate( this.minCustomers, this.maxCustomers, this.avgSale )
+    // !!! a little different than how it was done with geno; built the element first in memory then appended near end, for, and i quote, "It scales better.
+    // It matches professional practice.
+    // It keeps DOM operations predictable"
+
 }
 
 let oslo = {
@@ -91,8 +135,50 @@ let oslo = {
         return Math.floor(Math.random() * (this.maxCustomers - this.minCustomers + 1)) + this.minCustomers;
 },
 
+    // | #3 | Calculate & store simulated amounts of cookies purchased each hour, using average cookies purchased and random number of customers generated
+    calcSales: function() {
+        this.estimates = [];
+        let total = 0;
+
+        for (let i = 0; i < hours.length; i++) {
+            let customers = this.randomCustomers();
+            let cookies = Math.floor(customers * this.avgSale);
+            this.estimates.push(cookies);
+            total += cookies;
+        }
+
+        this.estimates.push(total);  // | #4 | Store the results in array…  as a property of the object 
+    },
+
+    render: function() { // | #5 & 6 | Display the values of each array as unordered lists in the browser.
+        let container = document.getElementById("salesData");
+
+        let section = document.createElement("section");
+        let h2 = document.createElement("h2");
+        h2.textContent = this.name;
+        section.appendChild(h2);
+
+        let ul = document.createElement("ul");
+
+        for (let i = 0; i < hours.length; i++) {
+            let li = document.createElement("li");
+            li.textContent = `${hours[i]}: ${this.estimates[i]} cookies`;
+            ul.appendChild(li);
+        }
+
+        let totalLi = document.createElement("li");
+        totalLi.textContent = `Total: ${this.estimates[this.estimates.length - 1]} cookies`;
+        ul.appendChild(totalLi);
+
+        section.appendChild(ul);
+        container.appendChild(section);
+    },
+
     // do it like we did with Geno's age ...
-    // estimate: this.estimates = generateEstimate( this.minCustomers, this.maxCustomers, this.avgSale )
+    // !!! a little different than how it was done with geno; built the element first in memory then appended near end, for, and i quote, "It scales better.
+    // It matches professional practice.
+    // It keeps DOM operations predictable"
+
 }
 
 let paris = {
@@ -107,8 +193,50 @@ let paris = {
         return Math.floor(Math.random() * (this.maxCustomers - this.minCustomers + 1)) + this.minCustomers;
 },
 
+    // | #3 | Calculate & store simulated amounts of cookies purchased each hour, using average cookies purchased and random number of customers generated
+    calcSales: function() {
+        this.estimates = [];
+        let total = 0;
+
+        for (let i = 0; i < hours.length; i++) {
+            let customers = this.randomCustomers();
+            let cookies = Math.floor(customers * this.avgSale);
+            this.estimates.push(cookies);
+            total += cookies;
+        }
+
+        this.estimates.push(total);  // | #4 | Store the results in array…  as a property of the object 
+    },
+
+    render: function() { // | #5 & 6 | Display the values of each array as unordered lists in the browser.
+        let container = document.getElementById("salesData");
+
+        let section = document.createElement("section");
+        let h2 = document.createElement("h2");
+        h2.textContent = this.name;
+        section.appendChild(h2);
+
+        let ul = document.createElement("ul");
+
+        for (let i = 0; i < hours.length; i++) {
+            let li = document.createElement("li");
+            li.textContent = `${hours[i]}: ${this.estimates[i]} cookies`;
+            ul.appendChild(li);
+        }
+
+        let totalLi = document.createElement("li");
+        totalLi.textContent = `Total: ${this.estimates[this.estimates.length - 1]} cookies`;
+        ul.appendChild(totalLi);
+
+        section.appendChild(ul);
+        container.appendChild(section);
+    },
+
     // do it like we did with Geno's age ...
-    // estimate: this.estimates = generateEstimate( this.minCustomers, this.maxCustomers, this.avgSale )
+    // !!! a little different than how it was done with geno; built the element first in memory then appended near end, for, and i quote, "It scales better.
+    // It matches professional practice.
+    // It keeps DOM operations predictable"
+
 }
 
 let lima = {
@@ -123,8 +251,50 @@ let lima = {
         return Math.floor(Math.random() * (this.maxCustomers - this.minCustomers + 1)) + this.minCustomers;
 },
 
+    // | #3 | Calculate & store simulated amounts of cookies purchased each hour, using average cookies purchased and random number of customers generated
+    calcSales: function() {
+        this.estimates = [];
+        let total = 0;
+
+        for (let i = 0; i < hours.length; i++) {
+            let customers = this.randomCustomers();
+            let cookies = Math.floor(customers * this.avgSale);
+            this.estimates.push(cookies);
+            total += cookies;
+        }
+
+        this.estimates.push(total);  // | #4 | Store the results in array…  as a property of the object 
+    },
+
+    render: function() { // | #5 & 6 | Display the values of each array as unordered lists in the browser.
+        let container = document.getElementById("salesData");
+
+        let section = document.createElement("section");
+        let h2 = document.createElement("h2");
+        h2.textContent = this.name;
+        section.appendChild(h2);
+
+        let ul = document.createElement("ul");
+
+        for (let i = 0; i < hours.length; i++) {
+            let li = document.createElement("li");
+            li.textContent = `${hours[i]}: ${this.estimates[i]} cookies`;
+            ul.appendChild(li);
+        }
+
+        let totalLi = document.createElement("li");
+        totalLi.textContent = `Total: ${this.estimates[this.estimates.length - 1]} cookies`;
+        ul.appendChild(totalLi);
+
+        section.appendChild(ul);
+        container.appendChild(section);
+    },
+
     // do it like we did with Geno's age ...
-    // estimate: this.estimates = generateEstimate( this.minCustomers, this.maxCustomers, this.avgSale )
+    // !!! a little different than how it was done with geno; built the element first in memory then appended near end, for, and i quote, "It scales better.
+    // It matches professional practice.
+    // It keeps DOM operations predictable"
+
 }
 
 // -------------------------------------
@@ -134,3 +304,19 @@ let lima = {
 // seattle
 seattle.calcSales();
 seattle.render();
+
+// tokyo
+tokyo.calcSales();
+tokyo.render();
+
+// oslo
+oslo.calcSales();
+oslo.render();
+
+// paris
+paris.calcSales();
+paris.render();
+
+// lima
+lima.calcSales();
+lima.render();
