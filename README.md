@@ -17,6 +17,35 @@ fish flavored biscuits business site
   - started applying styling
     - added black and orange banner (fix left and right margins(fixed through use of reset css... .__.))
       - centered text
-      - !!! need to align nav items s-x-s !!!
+      - !!! need to align nav items s-x-s !!!, added padding to top, bottom, and left
+      - changed link color to black for active and visited
       - added grey-ish footer banner
       - refactored code to use element selectors, rather than classes for the main shared design elements across both pages
+
+## Items completed
+
+- Sales data section
+  1. `this.minCustomers`, `this.maxCustomers`, `this.avgSale`
+  2. `this.randomCustomers();`
+  3. `this.calcSales();`
+  4. `this.estimates[];`
+  5. `this.render();`
+  6. displayed on site; sales.html
+
+- Home Page
+
+  5. Header background: Black
+  6. Header Navigation: Salmon background, black link text
+  7. Page Background: White
+
+## list of items left to do
+
+- Home Page
+  1. Our custom sans-serif Google Font for use in heading tags (<h# />) called “Righteous”
+  2. A specified standard sans-serif web font for sales data (such as Arial, Verdana, or Helvetica).
+  3. A specified standard serif web font for text (such as Georgia, Times).
+  4. Specified different font colors for all three font uses.
+
+  8. Be thorough in your implementation of the designed layout and overall organization of the page.
+  9. Run a Lighthouse Accessibility report. In this module, push to achieve a score between 65-80. Add the screenshot of your score to your README.md.
+  10. Include all of the typical stuff that you’ll find on the home page of a business: locations, hours, contact information, some text about how awesome the business is, etc. Be creative, and again, think about what is meaningful to a typical end user.
