@@ -24,6 +24,7 @@ fish flavored biscuits business site
 
 - 02.24
   - refactored js to simplify obj literals into using a constructor as well as a prototype for methods.
+  - added call to prototype methods to call methods.
 
 ## Items completed
 
@@ -33,7 +34,7 @@ fish flavored biscuits business site
   3. `this.calcSales();`
   4. `this.estimates[];`
   5. `this.render();`
-  6. displayed on site; sales.html
+  6. displayed on site; `sales.html`
 
 - Home Page
 

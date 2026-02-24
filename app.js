@@ -67,22 +67,44 @@ Stores.prototype.render = function() {                  // | #5 & 6 | Display th
     container.appendChild(section);
 };
 
-///---------------------------------------------
+///----------------------------------------------
 //  Object Literals for shop locations          |
 //----------------------------------------------
-// ---------------------------------------------
-//  invoking the methods needed per city         |
-//  deleted 02.24; refactored for constructors  |
-// ---------------------------------------------
-
-
-// -------------------------------------------
-// New instances per city using costructors  |
+// --------------------------------------------
+// New instances per city using costructors   |
 //              and prototypes               |
-// -------------------------------------------
+// ------------------------------------------
 
 const seattle = new Stores("Seattle", "555-1590", "400 Broad St.", 23, 65, 6.3);
 const tokyo = new Stores("Tokyo", "213-1111", "1-1 Chiyoda", 3, 24, 1.2);
 const oslo = new Stores("Oslo", "200-1400", "Johanne Dybwads plass 1", 11, 38, 3.7);
 const paris = new Stores("Paris", "537-7377", "Pl. Charles de Gaulle", 20, 38, 2.3);
 const lima = new Stores("Lima", "321-7654", "Jr. Bolognesi 504", 2, 16, 4.6);
+
+// -----------------------------------------------
+//  invoking the methods needed per city         |
+//  deleted 02.24; refactored for constructors  |
+// ---------------------------------------------
+// --------------------------------------------------------------
+// invoking/calling prototype methods to populate data on html  |
+// -------------------------------------------------------------
+
+seattle.randomCustomers();
+seattle.calcSales();
+seattle.render();
+
+tokyo.randomCustomers();
+tokyo.calcSales();
+tokyo.render();
+
+oslo.randomCustomers();
+oslo.calcSales();
+oslo.render();
+
+paris.randomCustomers();
+paris.calcSales();
+paris.render();
+
+lima.randomCustomers();
+lima.calcSales();
+lima.render();
