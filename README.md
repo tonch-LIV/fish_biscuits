@@ -22,6 +22,9 @@ fish flavored biscuits business site
       - added grey-ish footer banner
       - refactored code to use element selectors, rather than classes for the main shared design elements across both pages
 
+- 02.24
+  - refactored js to simplify obj literals into using a constructor as well as a prototype for methods.
+
 ## Items completed
 
 - Sales data section
