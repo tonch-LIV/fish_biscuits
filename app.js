@@ -35,7 +35,7 @@ Stores.prototype.calcSales = function() {
 
     for (let i = 0; i < hours.length; i++) {
         let customers = this.randomCustomers();
-        let cookies = Math.floor(customers * thisavgSale);
+        let cookies = Math.floor(customers * this.avgSale);
         this.estimates.push(cookies);
         total += cookies;
     }
@@ -89,22 +89,17 @@ const lima = new Stores("Lima", "321-7654", "Jr. Bolognesi 504", 2, 16, 4.6);
 // invoking/calling prototype methods to populate data on html  |
 // -------------------------------------------------------------
 
-seattle.randomCustomers();
 seattle.calcSales();
 seattle.render();
 
-tokyo.randomCustomers();
 tokyo.calcSales();
 tokyo.render();
 
-oslo.randomCustomers();
 oslo.calcSales();
 oslo.render();
 
-paris.randomCustomers();
 paris.calcSales();
 paris.render();
 
-lima.randomCustomers();
 lima.calcSales();
 lima.render();
