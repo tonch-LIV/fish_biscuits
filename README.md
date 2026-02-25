@@ -25,7 +25,9 @@ fish flavored biscuits business site
 - 02.24
   - refactored js to simplify obj literals into using a constructor as well as a prototype for methods.
   - added call to prototype methods to call methods.
-  - found error on why list were not populating and refined method calls. will push and start working on table conversion.
+  - found error on why `<ul>` list were not populating from js code and refined method calls. will push and start working on table conversion.
+  - modified `constructor` name from `Stores` to `Store` and updated relevant `prototypes` and invocations. also added not on why only two `prototypes` are called, not `.randomCustomers()`.
+  - 
 
 ## Items completed
 

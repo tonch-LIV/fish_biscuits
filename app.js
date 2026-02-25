@@ -9,7 +9,7 @@ const hours = [
 //  constructor template for objects  |
 //------------------------------------
 
-function Stores(name, phone, address, minCustomers, maxCustomers, avgSale) {
+function Store(name, phone, address, minCustomers, maxCustomers, avgSale) {
     this.name = name;
     this.phone = phone;
     this.address = address;
@@ -24,12 +24,12 @@ function Stores(name, phone, address, minCustomers, maxCustomers, avgSale) {
 //-------------------------
 
 
-Stores.prototype.randomCustomers = function() {                 // | #2 | generate random customers number to simulate hourly sales
+Store.prototype.randomCustomers = function() {                 // | #2 | generate random customers number to simulate hourly sales
     return Math.floor(Math.random() * (this.maxCustomers - this.minCustomers + 1)) + this.minCustomers;
 };
 
 // | #3 | Calculate & store simulated amounts of cookies purchased each hour, using average cookies purchased and random number of customers generated
-Stores.prototype.calcSales = function() {
+Store.prototype.calcSales = function() {
     this.estimates = [];
     let total = 0;
 
@@ -43,7 +43,7 @@ Stores.prototype.calcSales = function() {
     this.estimates.push(total);                             // | #4 | Store the results in array…  as a property of the object
 };
 
-Stores.prototype.render = function() {                  // | #5 & 6 | Display the values of each array as unordered lists in the browser.
+Store.prototype.render = function() {                  // | #5 & 6 | Display the values of each array as unordered lists in the browser.
     let container = document.getElementById("salesData");
 
     let section = document.createElement("section");
@@ -75,11 +75,11 @@ Stores.prototype.render = function() {                  // | #5 & 6 | Display th
 //              and prototypes               |
 // ------------------------------------------
 
-const seattle = new Stores("Seattle", "555-1590", "400 Broad St.", 23, 65, 6.3);
-const tokyo = new Stores("Tokyo", "213-1111", "1-1 Chiyoda", 3, 24, 1.2);
-const oslo = new Stores("Oslo", "200-1400", "Johanne Dybwads plass 1", 11, 38, 3.7);
-const paris = new Stores("Paris", "537-7377", "Pl. Charles de Gaulle", 20, 38, 2.3);
-const lima = new Stores("Lima", "321-7654", "Jr. Bolognesi 504", 2, 16, 4.6);
+const seattle = new Store("Seattle", "555-1590", "400 Broad St.", 23, 65, 6.3);
+const tokyo = new Store("Tokyo", "213-1111", "1-1 Chiyoda", 3, 24, 1.2);
+const oslo = new Store("Oslo", "200-1400", "Johanne Dybwads plass 1", 11, 38, 3.7);
+const paris = new Store("Paris", "537-7377", "Pl. Charles de Gaulle", 20, 38, 2.3);
+const lima = new Store("Lima", "321-7654", "Jr. Bolognesi 504", 2, 16, 4.6);
 
 // -----------------------------------------------
 //  invoking the methods needed per city         |
@@ -89,17 +89,22 @@ const lima = new Stores("Lima", "321-7654", "Jr. Bolognesi 504", 2, 16, 4.6);
 // invoking/calling prototype methods to populate data on html  |
 // -------------------------------------------------------------
 
+// seattle.randomCustomers();  -  No need to call since it is being called inside of calcSales()
 seattle.calcSales();
 seattle.render();
 
+// tokyo.randomCustomers();  -  "^ v"
 tokyo.calcSales();
 tokyo.render();
 
+// oslo.randomCustomers();  -  " "
 oslo.calcSales();
 oslo.render();
 
+// paris.randomCustomers();  -  " "
 paris.calcSales();
 paris.render();
 
+// lima.randomCustomers();  -  " "
 lima.calcSales();
 lima.render();
