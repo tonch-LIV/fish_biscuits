@@ -44,12 +44,59 @@ Store.prototype.calcSales = function() {
 };
 
 Store.prototype.render = function() {                  // | #5 & 6 | Display the values of each array as unordered lists in the browser.
-    let container = document.getElementById("salesData");
+    let container = document.getElementById("salesData"); //links DOM to HTML by id
 
+// create section (within div, but appended later) and table elements (also appended later, but to section)
     let section = document.createElement("section");
-    let h2 = document.createElement("h2");
-    h2.textContent = this.name;
-    section.appendChild(h2);
+    let table = document.createElement("table");
+
+    // caption element with text content "created"(appended) inside
+    let caption = document.createElement("caption")
+    caption.textContent = "this table is meant to practice formatting / sales data totals per city and per hour";
+    section.appendChild(caption); //move append later to end, now is fine here
+
+    // table HEAD with text content
+    let thead = document.createElement("thead");
+    thead.textContent = "Sales Data per city and hour";
+
+    /////////////////////////////////////////////////////////
+    // table body
+    let tbody = document.createElement("tbody");
+    // now table content
+    // table row creation here for ONE top table row
+    let headerRow = createElement("tr");
+
+    // creates first column header; name: Location, and appends to headerRow
+    let locationHeader = document.createElement("th");
+    locationHeader.textContent = "Location";
+    headerRow.appendChild(locationHeader);
+
+    // hours loop for all 14 hours of business, and add hour to header
+    for (let i = 0; i < hours.length; i++) {
+        let hourHeader = document.createElement("th")
+        hourHeader.textContent = hours[i]
+        headerRow.appendChild(hourHeader);
+    }
+
+    // cumilative total header
+    let totalsHeader = document.createElement("th");
+    totalsHeader.textContent = "Location Totals";
+    headerRow.appendChild(headerRow);
+
+    ////////////////////////////////////////////////////
+    // footer row
+    let tfoot = document.createElement("tfoot")
+    // footer totals in here
+
+    // now, the appends
+    section.appendChild(table); // table is wrapped by section
+    table.appendChild(caption); // caption inside table
+    table.appendChild(thead); // heading inside table
+    table.appendChild(tbody); //tbody inside table as well
+    thead.appendChild(headerRow); // headerRow nested within thead
+    table.appendChild(tfoot); // footer nested in table, to close out table
+    container.appendChild(section);
+
 
     let ul = document.createElement("ul");
 
