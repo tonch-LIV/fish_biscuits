@@ -1,10 +1,12 @@
-/* * {
+* {
+  /* // <weight>: Use a value from 400 to 700 */
+/* // <uniquifier>: Use a unique and descriptive class name */
 
-} */
-
-/* header {
- 
-} */
+  font-family: "Domine", serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
 
 h1 {
   background-color: #111111;
@@ -14,6 +16,13 @@ h1 {
   /* margin: 0 0 0 0; */
   /* border-radius: 15px; */
   text-align: center;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Righteous", sans-serif;
+  font-size:x-large;
+  font-weight: 300;
+  font-style: normal;
 }
 
 nav {
@@ -30,14 +39,53 @@ a:link, a:visited {
   color: black;
 }
 
-/* main {
-
-} */
-
 footer {
   background-color: #cccccc;
   padding-top: 3%;
   padding-bottom: 3%;
   /* margin: 0 0 0 0; */
   text-align: center;
+}
+
+main {
+  min-height: 20%;
+  max-height: 80%;
+  border-color:aqua;
+  border-width: 5px;
+  border-style:double;
+}
+
+#salesData {
+  padding: 2rem;
+}
+
+#salesData table {
+  font-family: "Fredoka", sans-serif;
+  font-size: x-large;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-variation-settings:
+    "wdth" 100;
+    /* // <weight>: Use a value from 300 to 700 */
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#salesData thead {
+  background-color: #444;
+  color: white;
+  font-weight: 600;
+}
+
+#salesData th,
+#salesData td {
+  border: 1px solid #333;
+  padding: 8px;
+  text-align: center;
+}
+
+#salesData tfoot {
+  font-weight: 600;
+  background-color: #ddd;
 }

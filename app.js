@@ -5,6 +5,8 @@ const hours = [
   "12pm","1pm","2pm","3pm","4pm","5pm","6pm","7pm"
 ];
 
+let allStores = [];
+
 //-------------------------------------
 //  constructor template for objects  |
 //------------------------------------
@@ -17,12 +19,12 @@ function Store(name, phone, address, minCustomers, maxCustomers, avgSale) {
     this.maxCustomers = maxCustomers;  // -max hourly customers,   |  #1  |
     this.avgSale = avgSale;            // and the average cookies per customer, in object properties.
     this.estimates = [];
+    allStores.push(this);
 }
 
 //--------------------------
 //  prototype for methods  |
 //-------------------------
-
 
 Store.prototype.randomCustomers = function() {                 // | #2 | generate random customers number to simulate hourly sales
     return Math.floor(Math.random() * (this.maxCustomers - this.minCustomers + 1)) + this.minCustomers;
@@ -43,47 +45,63 @@ Store.prototype.calcSales = function() {
     this.estimates.push(total);                             // | #4 | Store the results in array…  as a property of the object
 };
 
-Store.prototype.render = function() {                  // | #5 & 6 | Display the values of each array as unordered lists in the browser.
+Store.prototype.render = function() {                  
+    // grabs tbody and creates tr
+    let tbody = document.querySelector("tbody")
+    let tr = document.createElement("tr")
+
+    let nameCell = document.createElement("th");
+    nameCell.textContent = this.name;
+    tr.appendChild(nameCell);
+
+    for (let i = 0; i < hours.length; i++) {
+        let td = document.createElement("td");
+        td.textContent = this.estimates[i];
+        tr.appendChild(td);
+};
+
+    let totalCell = document.createElement("td");
+    totalCell.textContent = this.estimates[this.estimates.length - 1];
+    tr.appendChild(totalCell);
+
+    tbody.appendChild(tr);
+};
+
+///-------------------------
+//  Create Table for data  |
+//-------------------------
+
+function buildTable() {
+    // | #5 & 6 | Display the values of each array as unordered lists in the browser.
     let container = document.getElementById("salesData"); //links DOM to HTML by id
 
-// create section (within div, but appended later) and table elements (also appended later, but to section)
+    // create section (within div, but appended later) and table elements (also appended later, but to section)
     let section = document.createElement("section");
     let table = document.createElement("table");
-
     // caption element with text content "created"(appended) inside
     let caption = document.createElement("caption")
-    caption.textContent = "this table is meant to practice formatting / sales data totals per city and per hour";
-    section.appendChild(caption); //move append later to end, now is fine here
+    caption.textContent = "sales data totals per city and per hour";
 
-    // table HEAD with text content
+    // table HEAD
     let thead = document.createElement("thead");
-    thead.textContent = "Sales Data per city and hour";
-
-    /////////////////////////////////////////////////////////
-    // table body
-    let tbody = document.createElement("tbody");
-    // now table content
-    // table row creation here for ONE top table row
-    let headerRow = createElement("tr");
-
-    // creates first column header; name: Location, and appends to headerRow
-    let locationHeader = document.createElement("th");
+       // table row creation here for ONE top table row
+    let headerRow = document.createElement("tr");
+    let locationHeader = document.createElement("th"); // locations header
     locationHeader.textContent = "Location";
     headerRow.appendChild(locationHeader);
 
-    // hours loop for all 14 hours of business, and add hour to header
-    for (let i = 0; i < hours.length; i++) {
-        let hourHeader = document.createElement("th")
-        hourHeader.textContent = hours[i]
+    for (let i = 0; i < hours.length; i++) {    // hours header
+        let hourHeader = document.createElement("th");
+        hourHeader.textContent = hours[i];
         headerRow.appendChild(hourHeader);
     }
 
-    // cumilative total header
-    let totalsHeader = document.createElement("th");
+    let totalsHeader = document.createElement("th");     //locations totals header
     totalsHeader.textContent = "Location Totals";
-    headerRow.appendChild(headerRow);
+    headerRow.appendChild(totalsHeader);
 
-    ////////////////////////////////////////////////////
+    // table body
+    let tbody = document.createElement("tbody");
     // footer row
     let tfoot = document.createElement("tfoot")
     // footer totals in here
@@ -95,28 +113,42 @@ Store.prototype.render = function() {                  // | #5 & 6 | Display the
     table.appendChild(tbody); //tbody inside table as well
     thead.appendChild(headerRow); // headerRow nested within thead
     table.appendChild(tfoot); // footer nested in table, to close out table
-    container.appendChild(section);
 
+    // will need to move to own function once form comes into play
+    // footer totals
+    let footerRow = document.createElement("tr");
 
-    let ul = document.createElement("ul");
+    // 1️ - "Totals" label cellbb
+    let totalsLabel = document.createElement("th");
+    totalsLabel.textContent = "Totals";
+    footerRow.appendChild(totalsLabel);
+
+    // 2️ - Hourly totals
+    let grandTotal = 0;
 
     for (let i = 0; i < hours.length; i++) {
-        let li = document.createElement("li");
-        li.textContent = `${hours[i]}: ${this.estimates[i]} cookies`;
-        ul.appendChild(li);
+
+        let hourlyTotal = 0;
+
+        for (let j = 0; j < allStores.length; j++) {
+            hourlyTotal += allStores[j].estimates[i];
+        }
+
+        let td = document.createElement("td");
+        td.textContent = hourlyTotal;
+        footerRow.appendChild(td);
+
+        grandTotal += hourlyTotal;
     }
 
-    let totalLi = document.createElement("li");
-    totalLi.textContent = `Total: ${this.estimates[this.estimates.length - 1]} cookies`;
-    ul.appendChild(totalLi);
+    // 3️ - Grand total cell
+    let grandTotalCell = document.createElement("td");
+    grandTotalCell.textContent = grandTotal;
+    footerRow.appendChild(grandTotalCell);
 
-    section.appendChild(ul);
+    tfoot.appendChild(footerRow);
     container.appendChild(section);
 };
-
-///----------------------------------------------
-//  Object Literals for shop locations          |
-//----------------------------------------------
 // --------------------------------------------
 // New instances per city using costructors   |
 //              and prototypes               |
@@ -128,30 +160,25 @@ const oslo = new Store("Oslo", "200-1400", "Johanne Dybwads plass 1", 11, 38, 3.
 const paris = new Store("Paris", "537-7377", "Pl. Charles de Gaulle", 20, 38, 2.3);
 const lima = new Store("Lima", "321-7654", "Jr. Bolognesi 504", 2, 16, 4.6);
 
-// -----------------------------------------------
-//  invoking the methods needed per city         |
-//  deleted 02.24; refactored for constructors  |
-// ---------------------------------------------
-// --------------------------------------------------------------
-// invoking/calling prototype methods to populate data on html  |
-// -------------------------------------------------------------
+// ------------------------------------------------------------------------
+// invoking/calling table and prototype methods to populate data on html  |
+// -----------------------------------------------------------------------
 
 // seattle.randomCustomers();  -  No need to call since it is being called inside of calcSales()
+
+// calc sales first
 seattle.calcSales();
-seattle.render();
-
-// tokyo.randomCustomers();  -  "^ v"
 tokyo.calcSales();
-tokyo.render();
-
-// oslo.randomCustomers();  -  " "
 oslo.calcSales();
-oslo.render();
-
-// paris.randomCustomers();  -  " "
 paris.calcSales();
-paris.render();
-
-// lima.randomCustomers();  -  " "
 lima.calcSales();
+
+// build table
+buildTable();
+
+// render store row
+seattle.render();
+tokyo.render();
+oslo.render();
+paris.render();
 lima.render();

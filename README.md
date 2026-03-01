@@ -27,7 +27,14 @@ fish flavored biscuits business site
   - added call to prototype methods to call methods.
   - found error on why `<ul>` list were not populating from js code and refined method calls. will push and start working on table conversion.
   - modified `constructor` name from `Stores` to `Store` and updated relevant `prototypes` and invocations. also added not on why only two `prototypes` are called, not `.randomCustomers()`.
-  - 
+
+- 02.26.2026
+  - major refactor to build table instead of list
+
+- 02.28.2026
+  - cleaned up js, added buildTable function as well appening proper html elements.
+  - linked cutom fonts (3; headings, sales data, all other text).
+  - started styling, but realized I should created a branch...
 
 ## Items completed
 
@@ -40,6 +47,9 @@ fish flavored biscuits business site
   6. displayed on site; `sales.html`
 
 - Home Page
+  1. Our custom sans-serif Google Font for use in heading tags (<h# />) called “Righteous”
+  2. A specified standard sans-serif web font for sales data (such as Arial, Verdana, or Helvetica). - Fredoka
+  3. A specified standard serif web font for text (such as Georgia, Times). - Domine
 
   5. Header background: Black
   6. Header Navigation: Salmon background, black link text
@@ -48,9 +58,6 @@ fish flavored biscuits business site
 ## list of items left to do
 
 - Home Page
-  1. Our custom sans-serif Google Font for use in heading tags (<h# />) called “Righteous”
-  2. A specified standard sans-serif web font for sales data (such as Arial, Verdana, or Helvetica).
-  3. A specified standard serif web font for text (such as Georgia, Times).
   4. Specified different font colors for all three font uses.
 
   8. Be thorough in your implementation of the designed layout and overall organization of the page.
