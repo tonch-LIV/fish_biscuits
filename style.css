@@ -20,7 +20,7 @@ h1 {
 
 h1, h2, h3, h4, h5, h6 {
   font-family: "Righteous", sans-serif;
-  font-size:x-large;
+  font-size: xx-large;
   font-weight: 300;
   font-style: normal;
 }
@@ -30,24 +30,31 @@ nav {
   padding-top: 1%;
   padding-left: 1%;
   padding-bottom: 1%;
+  font-size: x-large;
   /* margin: 0 0 0 0; */
   /* text-align: left; */
   /* list-style-type: none; */
+}
+
+#navLinks {
+  display: flex;
+  /* justify-content: space-around; */ /* centers them across banner and spaces evenly */
+  gap: 2rem;
 }
 
 a:link, a:visited {
   color: black;
 }
 
-footer {
-  background-color: #cccccc;
-  padding-top: 3%;
-  padding-bottom: 3%;
-  /* margin: 0 0 0 0; */
-  text-align: center;
+#fishPic {
+  display: flex;
+  justify-content: center;
 }
 
 main {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
   min-height: 20%;
   max-height: 80%;
   border-color:aqua;
@@ -88,4 +95,12 @@ main {
 #salesData tfoot {
   font-weight: 600;
   background-color: #ddd;
+}
+
+footer {
+  background-color: #cccccc;
+  padding-top: 3%;
+  padding-bottom: 3%;
+  /* margin: 0 0 0 0; */
+  text-align: center;
 }
