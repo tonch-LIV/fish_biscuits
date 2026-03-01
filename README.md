@@ -34,8 +34,8 @@ fish flavored biscuits business site
 - 02.28.2026
   - cleaned up js, added buildTable function as well appening proper html elements.
   - linked cutom fonts (3; headings, sales data, all other text).
-  - started styling, but realized I should created a branch...
-  - lighthouse for lab06; overdue, 
+  - started styling, but realized I should created a branch... created id's to use though..
+  - lighthouse for lab06; overdue, serves for lab07 as well.
   - ![Lighthouse report of 92](images\lighthouse_lab06.png)
 
 ## Items completed
@@ -58,22 +58,24 @@ fish flavored biscuits business site
   5. Header background: Black
   6. Header Navigation: Salmon background, black link text
   7. Page Background: White
+  8. Be thorough in your implementation of the designed layout and overall organization of the page.
+  9. Run a Lighthouse Accessibility report. In this module, push to achieve a score between 65-80. Add the screenshot of your score to your README.md.
+  10. Include all of the typical stuff that you’ll find on the home page of a business: locations, hours, contact information, some text about how awesome the business is, etc. Be creative, and again, think about what is meaningful to a typical end user.h
 
 ### Lab07
 
-01. Create a new branch for today’s lab. Make sure it has all of your changes from lab 06 so that you can extend the functionality.
+1. Create a new branch for today’s lab. Make sure it has all of your changes from lab 06 so that you can extend the functionality.
+2. Replace all of your object literals for the salmon cookie stand with a single constructor function that, when called with the ‘new’ keyword, it creates a new instance.
+3. Replace the lists of your data for each store and build a single table of data instead. It should look similar to the following:
+4. Display each stores data in a table format similar to what is below. Break each column by the hour and complete each row with a “Daily Location Total”.
 
-Replace all of your object literals for the salmon cookie stand with a single constructor function that, when called with the ‘new’ keyword, it creates a new instance.
+-
 
-Replace the lists of your data for each store and build a single table of data instead. It should look similar to the following:
-
-Display each stores data in a table format similar to what is below. Break each column by the hour and complete each row with a “Daily Location Total”.
+1. Each cookie stand location should have a separate render() method that creates and appends its row to the table
+2. The header row and footer row are each created in their own stand-alone function. (soon)
+NOTE: Please use a header cell for both the header row ( containing store hours ), and the footer row ( hourly and grand totals across all stores ).
 
 ## list of items left to do
 
 - Home Page
   4. Specified different font colors for all three font uses.
-
-  8. Be thorough in your implementation of the designed layout and overall organization of the page.
-  9. Run a Lighthouse Accessibility report. In this module, push to achieve a score between 65-80. Add the screenshot of your score to your README.md.
-  10. Include all of the typical stuff that you’ll find on the home page of a business: locations, hours, contact information, some text about how awesome the business is, etc. Be creative, and again, think about what is meaningful to a typical end user.
