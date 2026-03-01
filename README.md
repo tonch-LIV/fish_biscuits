@@ -35,8 +35,12 @@ fish flavored biscuits business site
   - cleaned up js, added buildTable function as well appening proper html elements.
   - linked cutom fonts (3; headings, sales data, all other text).
   - started styling, but realized I should created a branch...
+  - lighthouse for lab06; overdue, 
+  - ![Lighthouse report of 92](images\lighthouse_lab06.png)
 
 ## Items completed
+
+### Lab06
 
 - Sales data section
   1. `this.minCustomers`, `this.maxCustomers`, `this.avgSale`
@@ -54,6 +58,16 @@ fish flavored biscuits business site
   5. Header background: Black
   6. Header Navigation: Salmon background, black link text
   7. Page Background: White
+
+### Lab07
+
+01. Create a new branch for today’s lab. Make sure it has all of your changes from lab 06 so that you can extend the functionality.
+
+Replace all of your object literals for the salmon cookie stand with a single constructor function that, when called with the ‘new’ keyword, it creates a new instance.
+
+Replace the lists of your data for each store and build a single table of data instead. It should look similar to the following:
+
+Display each stores data in a table format similar to what is below. Break each column by the hour and complete each row with a “Daily Location Total”.
 
 ## list of items left to do
 
