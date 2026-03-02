@@ -7,6 +7,11 @@ const hours = [
 
 let allStores = [];
 
+let table;
+let tableHead;
+let tableBody;
+let tableFoot;
+
 //-------------------------------------
 //  constructor template for objects  |
 //------------------------------------
@@ -47,7 +52,6 @@ Store.prototype.calcSales = function() {
 
 Store.prototype.render = function() {                  
     // grabs tbody and creates tr
-    let tbody = document.querySelector("tbody")
     let tr = document.createElement("tr")
 
     let nameCell = document.createElement("th");
@@ -64,91 +68,120 @@ Store.prototype.render = function() {
     totalCell.textContent = this.estimates[this.estimates.length - 1];
     tr.appendChild(totalCell);
 
-    tbody.appendChild(tr);
-};
+    tableBody.appendChild(tr);};
 
 ///-------------------------
 //  Create Table for data  |
 //-------------------------
 
-function buildTable() {
+function buildTableStructure() {
     // | #5 & 6 | Display the values of each array as unordered lists in the browser.
-    let container = document.getElementById("salesData"); //links DOM to HTML by id
+    table = document.getElementById("salesData"); //links DOM to HTML by id
 
-    // create section (within div, but appended later) and table elements (also appended later, but to section)
-    let section = document.createElement("section");
-    let table = document.createElement("table");
-    // caption element with text content "created"(appended) inside
-    let caption = document.createElement("caption")
-    caption.textContent = "sales data totals per city and per hour";
-
-    // table HEAD
-    let thead = document.createElement("thead");
-       // table row creation here for ONE top table row
-    let headerRow = document.createElement("tr");
-    let locationHeader = document.createElement("th"); // locations header
-    locationHeader.textContent = "Location";
-    headerRow.appendChild(locationHeader);
-
-    for (let i = 0; i < hours.length; i++) {    // hours header
-        let hourHeader = document.createElement("th");
-        hourHeader.textContent = hours[i];
-        headerRow.appendChild(hourHeader);
-    }
-
-    let totalsHeader = document.createElement("th");     //locations totals header
-    totalsHeader.textContent = "Location Totals";
-    headerRow.appendChild(totalsHeader);
-
-    // table body
-    let tbody = document.createElement("tbody");
-    // footer row
-    let tfoot = document.createElement("tfoot")
-    // footer totals in here
-
+    // creates structure
+    tableHead = document.createElement("thead");
+    tableBody = document.createElement("tbody");
+    tableFoot = document.createElement("tfoot");
     // now, the appends
-    section.appendChild(table); // table is wrapped by section
-    table.appendChild(caption); // caption inside table
-    table.appendChild(thead); // heading inside table
-    table.appendChild(tbody); //tbody inside table as well
-    thead.appendChild(headerRow); // headerRow nested within thead
-    table.appendChild(tfoot); // footer nested in table, to close out table
+    table.appendChild(tableHead);
+    table.appendChild(tableBody);
+    table.appendChild(tableFoot);
+};
 
-    // will need to move to own function once form comes into play
-    // footer totals
-    let footerRow = document.createElement("tr");
+//////////
+// new header function
 
-    // 1️ - "Totals" label cellbb
-    let totalsLabel = document.createElement("th");
-    totalsLabel.textContent = "Totals";
-    footerRow.appendChild(totalsLabel);
+function renderHeader() {
+  let tr = document.createElement("tr");
 
-    // 2️ - Hourly totals
-    let grandTotal = 0;
+  // empty corner
+  let emptyTh = document.createElement("th");
+  emptyTh.textContent = "";
+  tr.appendChild(emptyTh);
 
-    for (let i = 0; i < hours.length; i++) {
+    // hour columns, plural
+  for (let i = 0; i < hours.length; i++) {
+    let th = document.createElement("th");
+    th.textContent = hours[i];
+    tr.appendChild(th);
+  }
+  
+  // daily total column
+  let totalTh = document.createElement("th");
+  totalTh.textContent = "Daily Location Total";
+  tr.appendChild(totalTh);
 
-        let hourlyTotal = 0;
+  tableHead.appendChild(tr);
+};
 
-        for (let j = 0; j < allStores.length; j++) {
-            hourlyTotal += allStores[j].estimates[i];
-        }
+//////////
+// new footer function
 
-        let td = document.createElement("td");
-        td.textContent = hourlyTotal;
-        footerRow.appendChild(td);
+function renderFooter() {
+  let tr = document.createElement("tr");
 
-        grandTotal += hourlyTotal;
+  let totalLabel = document.createElement("th");
+  totalLabel.textContent = "Totals";
+  tr.appendChild(totalLabel);
+
+  for (let i = 0; i < hours.length; i++) {
+    let hourlyTotal = 0;
+
+    for (let j = 0; j < allStores.length; j++) {
+      hourlyTotal += allStores[j].estimates[i];
     }
 
-    // 3️ - Grand total cell
-    let grandTotalCell = document.createElement("td");
-    grandTotalCell.textContent = grandTotal;
-    footerRow.appendChild(grandTotalCell);
+    let td = document.createElement("td");
+    td.textContent = hourlyTotal;
+    tr.appendChild(td);
+  }
+  // Grand Total
+  let grandTotal = 0;
+  for (let i = 0; i < allStores.length; i++) {
+    grandTotal += allStores[i].estimates[hours.length];
+  }
 
-    tfoot.appendChild(footerRow);
-    container.appendChild(section);
+  let grandTd = document.createElement("td");
+  grandTd.textContent = grandTotal;
+  tr.appendChild(grandTd);
+
+  tableFoot.appendChild(tr);
 };
+
+/////////////////////////////////////////
+// handler function for form submission
+
+function handleSubmit(event) {
+  event.preventDefault(); // self explanitory
+
+  // grabs values from form input
+  let name = event.target.name.value;
+  let minCustomers = Number(event.target.minCustomers.value);
+  let maxCustomers = Number(event.target.maxCustomers.value);
+  let avgSale = Number(event.target.avgSale.value);
+
+  // Create new store instance
+  let newStore = new Store(name, "", "", minCustomers, maxCustomers, avgSale);
+
+  newStore.calcSales();
+
+  // Clear old table
+  table.innerHTML = "";
+
+  // Rebuild everything
+  buildTableStructure();
+  renderHeader();
+
+  for (let i = 0; i < allStores.length; i++) {
+    allStores[i].render();
+  }
+
+  renderFooter();
+
+  // Reset form
+  event.target.reset();
+};
+
 // --------------------------------------------
 // New instances per city using costructors   |
 //              and prototypes               |
@@ -164,21 +197,28 @@ const lima = new Store("Lima", "321-7654", "Jr. Bolognesi 504", 2, 16, 4.6);
 // invoking/calling table and prototype methods to populate data on html  |
 // -----------------------------------------------------------------------
 
-// seattle.randomCustomers();  -  No need to call since it is being called inside of calcSales()
+// 1. Calculate sales for all stores
+for (let i = 0; i < allStores.length; i++) {
+  allStores[i].calcSales();
+};
 
-// calc sales first
-seattle.calcSales();
-tokyo.calcSales();
-oslo.calcSales();
-paris.calcSales();
-lima.calcSales();
+// 2. Build empty table structure
+buildTableStructure();
 
-// build table
-buildTable();
+// 3. Render header row
+renderHeader();
 
-// render store row
-seattle.render();
-tokyo.render();
-oslo.render();
-paris.render();
-lima.render();
+// 4. Render each store row
+for (let i = 0; i < allStores.length; i++) {
+  allStores[i].render();
+};
+
+// 5. Render footer row
+renderFooter();
+
+///////////////
+// form elements
+
+let storeForm = document.getElementById("storeForm"); //links to html
+
+storeForm.addEventListener("submit", handleSubmit);

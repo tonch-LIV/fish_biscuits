@@ -38,6 +38,14 @@ fish flavored biscuits business site
   - lighthouse for lab06; overdue, serves for lab07 as well.
   - ![Lighthouse report of 92](images\lighthouse_lab06.png)
 
+- 03.01.2026
+  - misc styling like centering, aligning and font sizing
+  - major restructure to table function and the way its built
+    - separated header and footer rows to separate functions
+  - added form submission elements to sales.html to add new stores and update table real time
+  - restructured function/method invocations
+  - added styling elements throughout
+
 ## Items completed
 
 ### Lab06
@@ -55,6 +63,8 @@ fish flavored biscuits business site
   2. A specified standard sans-serif web font for sales data (such as Arial, Verdana, or Helvetica). - Fredoka
   3. A specified standard serif web font for text (such as Georgia, Times). - Domine
 
+-
+
   5. Header background: Black
   6. Header Navigation: Salmon background, black link text
   7. Page Background: White
@@ -64,14 +74,14 @@ fish flavored biscuits business site
 
 ### Lab07
 
-1. Create a new branch for today’s lab. Make sure it has all of your changes from lab 06 so that you can extend the functionality.
-2. Replace all of your object literals for the salmon cookie stand with a single constructor function that, when called with the ‘new’ keyword, it creates a new instance.
-3. Replace the lists of your data for each store and build a single table of data instead. It should look similar to the following:
-4. Display each stores data in a table format similar to what is below. Break each column by the hour and complete each row with a “Daily Location Total”.
+1. Create a new branch. (table)
+2. Replace all object literals for cookie stand with single constructor function. (`Store`)
+3. Replace the lists of data and build table instead. (`buildTable`)
+4. Display stores data in table. Break column by hour and complete each row with “Daily Location Total”. (`buildTable`)
 
 -
 
-1. Each cookie stand location should have a separate render() method that creates and appends its row to the table
+1. Each cookie stand location has separate render() method that creates and appends row to the table. bottom of page (`[blank].render`)
 2. The header row and footer row are each created in their own stand-alone function. (soon)
 NOTE: Please use a header cell for both the header row ( containing store hours ), and the footer row ( hourly and grand totals across all stores ).
 

@@ -19,14 +19,17 @@
     <h1>Pat's Salmon Biscuits Sales Data!</h1>
     <nav>
       <ul id="navLinks">
-        <li><a class="" href="index.html">Home</a></li>
-        <li><a class="" href="sales.html">Sales Data</a></li>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="sales.html">Sales Data</a></li>
       </ul>
     </nav>
   </header>
   
   <main>
-    <div id="salesData"></div>
+
+    <div class="table-container">
+      <div id="salesData"></div>
+    </div>
     <!-- Elements created by js
      section
      table, will create text content from 'this.name'
@@ -40,6 +43,37 @@
       tfoot
 
      close out section-->
+
+    <h2>Add a New Store</h2>
+
+    <form id="storeForm">
+      <fieldset>
+        <legend>Store Info</legend>
+
+        <label>
+          Location Name:
+          <input type="text" name="name" required>
+        </label>
+
+        <label>
+          Minimum Customers per Hour:
+          <input type="number" name="minCustomers" required>
+        </label>
+
+        <label>
+          Maximum Customers per Hour:
+          <input type="number" name="maxCustomers" required>
+        </label>
+
+        <label>
+          Average Cookies per Sale:
+          <input type="number" step=".1" name="avgSale" required>
+        </label>
+
+        <button type="submit">Add Store</button>
+      </fieldset>
+    </form>
+    
   </main>
 
   <footer>&copy; Pat and only Pat, and his Biscuits @ ITTP 2026 </footer>
