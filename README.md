@@ -40,6 +40,11 @@ fish flavored biscuits business site
 
 - 03.01.2026
   - misc styling like centering, aligning and font sizing
+  - major restructure to table function and the way its built
+    - separated header and footer rows to separate functions
+  - added form submission elements to sales.html to add new stores and update table real time
+  - restructured function/method invocations
+  - added styling elements throughout
 
 ## Items completed
 
@@ -57,6 +62,8 @@ fish flavored biscuits business site
   1. Our custom sans-serif Google Font for use in heading tags (<h# />) called “Righteous”
   2. A specified standard sans-serif web font for sales data (such as Arial, Verdana, or Helvetica). - Fredoka
   3. A specified standard serif web font for text (such as Georgia, Times). - Domine
+
+-
 
   5. Header background: Black
   6. Header Navigation: Salmon background, black link text
